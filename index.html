@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مبروك التخرج</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FDF6F3;
+  --blush:#F6E3E6;
+  --rose:#E29AA6;
+  --rose-deep:#C4677A;
+  --ink:#5E2233;
+  --ink-soft:#8A5566;
+  --gold:#C6A15B;
+  --shadow:rgba(140,58,78,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Tajawal','Segoe UI',sans-serif;
+  font-weight:300;
+  line-height:1.95;
+  overflow-x:hidden;
+}
+/* ورق ناعم في الخلفية */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 0%, #FBE8EC 0%, transparent 65%),
+    radial-gradient(ellipse 60% 40% at 10% 90%, #F7EAE3 0%, transparent 60%);
+}
+
+/* ===== البتلات ===== */
+.petals{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.petal{
+  position:absolute;top:-8vh;
+  width:14px;height:14px;
+  background:var(--rose);opacity:.35;
+  border-radius:60% 0 60% 0;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  0%{transform:translateY(-10vh) rotate(0deg);opacity:0}
+  10%{opacity:.4}
+  90%{opacity:.25}
+  100%{transform:translateY(112vh) rotate(420deg);opacity:0}
+}
+
+/* ===== الهيرو ===== */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:3rem 1.5rem;
+}
+.cap{width:clamp(88px,13vw,128px);margin-bottom:2.2rem}
+.tassel{transform-origin:64px 26px;animation:sway 4.5s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+
+.eyebrow{
+  font-size:clamp(.95rem,2.2vw,1.1rem);
+  color:var(--ink-soft);font-weight:400;
+  letter-spacing:.02em;margin-bottom:.6rem;
+}
+.name{
+  font-family:'Aref Ruqaa',serif;font-weight:700;
+  font-size:clamp(3.2rem,14vw,7.5rem);
+  line-height:1.25;color:var(--rose-deep);
+  margin-bottom:.8rem;
+}
+.degree{
+  font-size:clamp(1rem,3vw,1.35rem);
+  color:var(--ink-soft);font-weight:400;max-width:34ch;
+}
+.rule{
+  width:1px;height:70px;margin-top:3.2rem;
+  background:linear-gradient(var(--rose),transparent);
+}
+
+/* ظهور الصفحة — مرة واحدة بس */
+.rise{opacity:0;transform:translateY(22px);animation:rise .9s cubic-bezier(.2,.7,.3,1) forwards}
+.d1{animation-delay:.15s}.d2{animation-delay:.45s}.d3{animation-delay:.75s}
+.d4{animation-delay:1.05s}.d5{animation-delay:1.35s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* ===== الرسالة ===== */
+.letter{
+  max-width:640px;margin:0 auto;
+  padding:5rem 1.6rem 4rem;
+}
+.letter h2{
+  font-family:'Aref Ruqaa',serif;font-weight:400;
+  font-size:clamp(1.8rem,5vw,2.6rem);
+  color:var(--rose-deep);margin-bottom:2rem;
+}
+.letter p{
+  font-size:clamp(1.05rem,2.6vw,1.18rem);
+  margin-bottom:1.5rem;max-width:62ch;
+}
+.letter p:first-of-type::first-letter{
+  font-family:'Aref Ruqaa',serif;
+  font-size:2.4em;color:var(--rose-deep);
+  float:right;line-height:.8;margin-left:.12em;margin-top:.12em;
+}
+.sign{
+  margin-top:3rem;font-family:'Aref Ruqaa',serif;
+  font-size:1.5rem;color:var(--rose-deep);
+}
+
+/* ===== المعرض ===== */
+.gallery-wrap{padding:3rem 1.6rem 6rem;max-width:1000px;margin:0 auto}
+.gallery-wrap h2{
+  font-family:'Aref Ruqaa',serif;font-weight:400;
+  font-size:clamp(1.6rem,4.5vw,2.2rem);
+  color:var(--rose-deep);text-align:center;margin-bottom:2.5rem;
+}
+.gallery{
+  columns:3 200px;column-gap:16px;
+}
+.shot{
+  break-inside:avoid;margin-bottom:16px;
+  border-radius:3px 26px 3px 26px;
+  overflow:hidden;background:var(--blush);
+  box-shadow:0 10px 28px var(--shadow);
+  cursor:zoom-in;display:block;width:100%;
+  border:0;padding:0;
+}
+.shot img{width:100%;display:block;transition:transform .5s ease}
+.shot:hover img,.shot:focus-visible img{transform:scale(1.04)}
+.shot.empty{
+  aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;
+  color:var(--ink-soft);font-size:.9rem;cursor:default;
+  background:linear-gradient(150deg,#F7E2E6,#F2E9E1);
+}
+
+/* ===== لايت بوكس ===== */
+.lightbox{
+  position:fixed;inset:0;z-index:50;display:none;
+  align-items:center;justify-content:center;padding:2rem;
+  background:rgba(70,25,40,.88);backdrop-filter:blur(6px);
+}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:86vh;border-radius:4px 30px 4px 30px}
+.close{
+  position:absolute;top:1.2rem;left:1.2rem;
+  background:none;border:0;color:#fff;font-size:2.4rem;
+  line-height:1;cursor:pointer;padding:.3rem .8rem;
+}
+
+/* ===== الخاتمة ===== */
+.outro{
+  text-align:center;padding:0 1.6rem 7rem;
+}
+.outro p{
+  font-family:'Aref Ruqaa',serif;
+  font-size:clamp(1.4rem,4.5vw,2rem);
+  color:var(--rose-deep);line-height:1.8;
+}
+.outro small{
+  display:block;margin-top:1.6rem;
+  color:var(--ink-soft);font-size:.9rem;font-family:'Tajawal',sans-serif;
+}
+
+:focus-visible{outline:2px solid var(--rose-deep);outline-offset:4px;border-radius:2px}
+
+.gate{
+  position:fixed;inset:0;z-index:80;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1.6rem;background:var(--paper);
+  transition:opacity .9s ease,visibility .9s;
+}
+.gate.hidden{opacity:0;visibility:hidden}
+.gate button{
+  font-family:'Aref Ruqaa',serif;font-size:clamp(1.6rem,6vw,2.6rem);
+  color:var(--rose-deep);background:none;border:0;cursor:pointer;
+  padding:1rem 2.4rem;border-radius:999px;
+  transition:background .3s;
+}
+.gate button:hover{background:var(--blush)}
+.gate small{color:var(--ink-soft);font-size:.85rem}
+
+.sound{
+  position:fixed;bottom:1.2rem;left:1.2rem;z-index:60;
+  width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--rose);background:rgba(253,246,243,.85);
+  color:var(--rose-deep);font-size:1.1rem;cursor:pointer;
+  backdrop-filter:blur(8px);
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rise{opacity:1;transform:none}
+  .petals{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     غيّر من هنا بس — كل حاجة تخصّها في المكان ده
+     ═══════════════════════════════════════════ -->
+     <div class="gate" id="gate">
+  <button id="gateBtn"></button>
+  <small>شغّلي الصوت ❤︎</small>
+</div>
+<button class="sound" id="soundBtn" aria-label="الصوت" hidden>♪</button>
+<audio id="track" loop preload="auto"></audio>
+<script>
+const CONFIG = {
+  name: "حبوبتي",                          // اسمها
+  eyebrow: "النهارده يوم يتكتب",           // السطر الصغير فوق الاسم
+  degree: "تخرجت من كلية التجاره دفعة ٢٠٢٦",    // الكلية والدفعة
+  signature: "حمودي اللي بيحبك",               // التوقيع تحت الرسالة
+  closing: "مبروك يا أجمل نجاح",           // السطر الأخير في الصفحة
+  music: "song.mp3",          // حط ملف الأغنية جنب الـ HTML
+  gateText: "افتحيها",        // الكلمة اللي على الشاشة الأولى
+  // الصور: حط الصور جنب الملف في فولدر اسمه photos
+  // أو استخدم لينكات مباشرة. سيبها فاضية [] لو مش عايز معرض.
+  photos: ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg"],
+
+  // الرسالة: كل سطر بين "" هو فقرة
+  letterTitle: "كلمتين من قلبي",
+  letter: [
+    "مبروك يا قلبي. مش مبروك عادية اللي بتتقال وتعدي — دي مبروك واقفة ورا كل ليلة سهرتيها وإنتي تعبانة، وكل مرة حسّيتي فيها إن الطريق طويل وكمّلتي برضه.",
+    "أنا شوفت كل حاجة. شوفتك وإنتي بتذاكري والدنيا كلها نايمة، وشوفتك وإنتي زعلانة وقلقانة ومش عارفة هتعملي إيه، وشوفتك وإنتي بتقومي تاني من غير ما حد يقولّك قومي. النجاح ده مش صدفة ولا حظ، ده إنتي.",
+    "أنا فخور بيكي بشكل مش عارف أوصفه. مش فخور بالشهادة قد ما أنا فخور بالبنت اللي وصلت للشهادة دي — بطيبتها وصبرها وإصرارها اللي مش بيخلص.",
+    "والنهارده وإنتي واقفة في الآخر بعد ما خلص كل ده، عايزك تعرفي إن ده مش النهاية، ده أول سطر في حاجة أكبر بكتير. وأنا هفضل واقف جنبك في كل سطر جاي زي ما كنت واقف في اللي فات.",
+    "مبروك يا حبيبتي. تستاهلي الدنيا كلها، ولسه الأحلى جاي."
+  ]
+};
+</script>
+<!-- ═══════════════════════════════════════════ -->
+
+<div class="petals" id="petals" aria-hidden="true"></div>
+
+<header class="hero">
+  <svg class="cap rise d1" viewBox="0 0 128 96" fill="none" aria-hidden="true">
+    <path d="M64 12 118 34 64 56 10 34 64 12Z" fill="#C4677A"/>
+    <path d="M26 42v20c0 6 17 13 38 13s38-7 38-13V42L64 62 26 42Z" fill="#E29AA6"/>
+    <g class="tassel">
+      <path d="M64 26v34" stroke="#C6A15B" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="64" cy="64" r="5" fill="#C6A15B"/>
+      <path d="M64 68v12" stroke="#C6A15B" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </svg>
+
+  <p class="eyebrow rise d2" id="eyebrow"></p>
+  <h1 class="name rise d3" id="name"></h1>
+  <p class="degree rise d4" id="degree"></p>
+  <div class="rule rise d5"></div>
+</header>
+
+<main>
+  <section class="letter">
+    <h2 id="letterTitle"></h2>
+    <div id="letterBody"></div>
+    <p class="sign" id="signature"></p>
+  </section>
+
+  <section class="gallery-wrap" id="galleryWrap" hidden>
+    <h2>لحظات</h2>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <section class="outro">
+    <p id="closing"></p>
+    <small>اتعمل بحب ❤︎</small>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="صورة مكبّرة">
+  <button class="close" id="closeBtn" aria-label="اقفل">&times;</button>
+  <img id="lightboxImg" alt="">
+</div>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+
+  document.title = "مبروك التخرج — " + CONFIG.name;
+  $('eyebrow').textContent   = CONFIG.eyebrow;
+  $('name').textContent      = CONFIG.name;
+  $('degree').textContent    = CONFIG.degree;
+  $('letterTitle').textContent = CONFIG.letterTitle;
+  $('signature').textContent = CONFIG.signature;
+  $('closing').textContent   = CONFIG.closing;
+
+  const body = $('letterBody');
+  CONFIG.letter.forEach(t => {
+    const p = document.createElement('p');
+    p.textContent = t;
+    body.appendChild(p);
+  });
+
+  // ===== المعرض =====
+  const photos = CONFIG.photos || [];
+  if (photos.length) {
+    $('galleryWrap').hidden = false;
+    const grid = $('gallery');
+    photos.forEach((src, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'shot';
+      btn.setAttribute('aria-label', 'كبّر الصورة ' + (i + 1));
+      const img = new Image();
+      img.src = src;
+      img.alt = '';
+      img.loading = 'lazy';
+      img.onerror = () => {
+        btn.className = 'shot empty';
+        btn.disabled = true;
+        btn.textContent = 'ضيف صورة هنا';
+      };
+      btn.appendChild(img);
+      btn.addEventListener('click', () => open(src));
+      grid.appendChild(btn);
+    });
+  }
+
+  // ===== لايت بوكس =====
+  const lb = $('lightbox'), lbImg = $('lightboxImg');
+  let lastFocus = null;
+  function open(src){
+    lastFocus = document.activeElement;
+    lbImg.src = src;
+    lb.classList.add('open');
+    $('closeBtn').focus();
+  }
+  function close(){
+    lb.classList.remove('open');
+    lbImg.src = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  $('closeBtn').addEventListener('click', close);
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+  // ===== البتلات =====
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const box = $('petals');
+    for (let i = 0; i < 14; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.style.right = Math.random() * 100 + 'vw';
+      p.style.animationDuration = (12 + Math.random() * 12) + 's';
+      p.style.animationDelay = (Math.random() * 14) + 's';
+      const s = 9 + Math.random() * 10;
+      p.style.width = s + 'px';
+      p.style.height = s + 'px';
+      p.style.opacity = .18 + Math.random() * .22;
+      box.appendChild(p);
+    }
+  }
+    const gate = $('gate'), track = $('track'), soundBtn = $('soundBtn');
+  $('gateBtn').textContent = CONFIG.gateText;
+  if (CONFIG.music) track.src = CONFIG.music;
+
+  $('gateBtn').addEventListener('click', () => {
+    gate.classList.add('hidden');
+    if (CONFIG.music) {
+      track.volume = 0;
+      track.play().then(() => {
+        soundBtn.hidden = false;
+        let v = 0;                          // تدرّج ناعم بدل ما تنط فجأة
+        const fade = setInterval(() => {
+          v = Math.min(v + .02, .6);
+          track.volume = v;
+          if (v >= .6) clearInterval(fade);
+        }, 60);
+      }).catch(() => {});
+    }
+  });
+
+  soundBtn.addEventListener('click', () => {
+    track.muted = !track.muted;
+    soundBtn.textContent = track.muted ? '✕' : '♪';
+  });
+})();
+</script>
+</body>
+</html>
